@@ -18,23 +18,25 @@ class MakeCronuts
   end
 
   def make_batters
+    ingredients_out = []
     @data_in.each do |item|
       item["batters"].each do |batter|
-        batter[1].map do |ingredient|
-          ingredient["type"]
+        batter[1].each do |ingredient|
+          ingredients_out << ingredient["type"]
         end
       end
     end
+    ingredients_out.uniq
   end
 
   def make_toppings
+    ingredients_out = []
     @data_in.each do |item|
-      item["toppings"].each do |topping|
-        topping[1].map do |ingredient|
-          ingredient["type"]
-        end
+      item["topping"].each do |ingredient|
+        ingredients_out << ingredient["type"]
       end
     end
+    ingredients_out.uniq
   end
 
 end

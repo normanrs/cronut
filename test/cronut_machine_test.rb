@@ -17,7 +17,7 @@ class MakeCronutsTest <  Minitest::Test
     data     = job.startup_data("./data/cronut.json")
 
     job.make_ingredients
-    assert_equal 4, job.batters.count
+    assert_equal 6, job.batters.count
     assert_equal 7, job.toppings.count
 
 
