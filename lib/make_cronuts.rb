@@ -6,18 +6,25 @@ require './lib/topping.rb'
 class MakeCronuts
   include ImportData
 
-	attr_reader :data_in, :batters, :toppings
+	attr_reader :data_in, :batters, :toppings, :items, :batters_list, :toppings_list
 
   def startup_data(path)
-    @data_in = import_json(path)["items"]["item"]
+    @data_in ||= import_json(path)["items"]["item"]
   end
 
-  def make_ingredients
-    @batters  = make_batters
-    @toppings = make_toppings
+  def make_items
+    @items = []
+    @data_in.each do |item|
+      Item.new
+    end
   end
 
-  def make_batters
+  def list_ingredients
+    @batters_list  = list_batters
+    @toppings_list = list_toppings
+  end
+
+  def list_batters
     ingredients_out = []
     @data_in.each do |item|
       item["batters"].each do |batter|
@@ -29,7 +36,7 @@ class MakeCronuts
     ingredients_out.uniq
   end
 
-  def make_toppings
+  def list_toppings
     ingredients_out = []
     @data_in.each do |item|
       item["topping"].each do |ingredient|
