@@ -20,17 +20,24 @@ class MakeCronuts
                  name: item["name"],
                   ppu: item["ppu"]
                   }
-      new_item = Item.new(item_data)
-      item["batters"]["batter"].each do |batter_data|
-        new_batter = Batter.new(batter_data)
-        new_item.batters << new_batter
-      end
-      item["topping"].each do |topping_data|
-        new_topping = Topping.new(topping_data)
-        new_item.toppings << new_topping
-      end
-      @items << new_item
+      new_1 = Item.new(item_data)
+      new_1.batters << make_batters(item)
+      new_1.toppings << make_toppings(item)
+      @items << new_1
     end
+  end
+
+  def make_batters(item_in)
+    item_in["batters"]["batter"].map do |batter_data|
+      Batter.new(batter_data)
+    end
+  end
+
+  def make_toppings(item_in)
+    item_in["topping"].map do |topping_data|
+      Topping.new(topping_data)
+    end
+
   end
 
   def list_ingredients

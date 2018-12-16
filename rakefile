@@ -5,3 +5,5 @@ task default: "test"
 Rake::TestTask.new do |task|
   task.pattern = "test/*_test.rb"
 end
+tests_num = Dir["test/*_test.rb"].count
+puts "Running #{tests_num} tests."

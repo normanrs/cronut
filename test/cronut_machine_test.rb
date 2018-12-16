@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/make_cronuts.rb'
 
-class MakeCronutsTest <  Minitest::Test
+class MakeCronutsTest < Minitest::Test
 
   def setup
     @job      = MakeCronuts.new
@@ -14,6 +14,20 @@ class MakeCronutsTest <  Minitest::Test
     expected = 3
 
     assert_equal expected, actual
+  end
+
+  def test_it_makes_batters
+    item_1 = @job.data_in.first
+    batters = @job.make_batters(item_1)
+
+    assert_equal 4, batters.count
+  end
+
+  def test_it_makes_toppings
+    item_1 = @job.data_in.first
+    toppings = @job.make_toppings(item_1)
+
+    assert_equal 7, toppings.count
   end
 
   def test_it_makes_nested_items

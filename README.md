@@ -3,11 +3,10 @@ This is a Turing project to create an array of nested objects from a JSON file. 
 
 ## Instructions:
 1. Clone this repo.
-2. Run "rake" from the command line to run all project tests
+2. Run "rake" from the command line to run all project tests.
 
 ## Environment:
-Ruby 2.4.1
-Rake 12.3.2
+Ruby 2.4.1, Rake 12.3.2
 
 ## Turing Project
 Original project assignment [Link](https://github.com/mikedao/cronut)
