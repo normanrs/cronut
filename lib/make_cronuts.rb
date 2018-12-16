@@ -14,8 +14,23 @@ class MakeCronuts
 
   def make_items
     @items = []
+    counter = 0
     @data_in.each do |item|
-      Item.new
+      item_data = {id: item["id"],
+               type: item["type"],
+               name: item["name"],
+                ppu: item["ppu"]
+                }
+      new_item = Item.new(item_data)
+      item["batters"]["batter"].each do |batter_data|
+        new_batter = Batter.new(batter_data)
+        new_item.batters << new_batter
+      end
+      item["topping"].each do |topping_data|
+        new_topping = Topping.new(topping_data)
+        new_item.toppings << new_topping
+      end
+      @items << new_item
     end
   end
 

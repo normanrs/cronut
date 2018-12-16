@@ -5,7 +5,7 @@ require './lib/item.rb'
 class ItemTest < Minitest::Test
 
   def test_item_creation_using_defaults
-    item_data = {id: 1, name: "Norm's Famous", type: "donut", ppu: 0.65 }
+    item_data = {id: 1, type: "donut", name: "Norm's Famous", ppu: 0.65 }
     ncronut = Item.new(item_data)
     assert_equal 1, ncronut.id
     assert_equal "Norm's Famous", ncronut.name
@@ -38,6 +38,5 @@ class ItemTest < Minitest::Test
     assert_equal [batter_1, batter_2, batter_3], ncronut.batters
     assert_equal [topping_1, topping_2], ncronut.toppings
   end
-
 
 end
