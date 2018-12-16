@@ -6,5 +6,4 @@ module ImportData
     JSON.parse(file)
   end
 
-
 end

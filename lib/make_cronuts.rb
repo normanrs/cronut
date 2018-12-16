@@ -16,10 +16,10 @@ class MakeCronuts
     @items = []
     @data_in.each do |item|
       item_data = {id: item["id"],
-               type: item["type"],
-               name: item["name"],
-                ppu: item["ppu"]
-                }
+                 type: item["type"],
+                 name: item["name"],
+                  ppu: item["ppu"]
+                  }
       new_item = Item.new(item_data)
       item["batters"]["batter"].each do |batter_data|
         new_batter = Batter.new(batter_data)
