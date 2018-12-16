@@ -14,7 +14,6 @@ class MakeCronuts
 
   def make_items
     @items = []
-    counter = 0
     @data_in.each do |item|
       item_data = {id: item["id"],
                type: item["type"],

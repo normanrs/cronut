@@ -21,7 +21,6 @@ class ItemTest < Minitest::Test
     batter_blueberry = { "id": "1003", "type": "Blueberry" }
     topping_none     = { "id": "5001", "type": "None" }
     topping_glazed   = { "id": "5002", "type": "Glazed" }
-    topping_sugar    = { "id": "5005", "type": "Sugar" }
     item_data_1 = {id: 1, name: "Norm's Famous", type: "donut", ppu: 0.65 }
     batter_1 = Batter.new(batter_regular)
     batter_2 = Batter.new(batter_chocolate)
