@@ -9,16 +9,16 @@ class MakeCronuts
 	attr_reader :data_in, :batters, :toppings, :items, :batters_list, :toppings_list
 
   def startup_data(path)
-    @data_in ||= import_json(path)["items"]["item"]
+    @data_in ||= import_json(path)[:items][:item]
   end
 
   def make_items
     @items = []
     @data_in.each do |item|
-      item_data = {id: item["id"],
-                 type: item["type"],
-                 name: item["name"],
-                  ppu: item["ppu"]
+      item_data = {id: item[:id],
+                 type: item[:type],
+                 name: item[:name],
+                  ppu: item[:ppu]
                   }
       new_1 = Item.new(item_data)
       new_1.batters << make_batters(item)
@@ -28,13 +28,13 @@ class MakeCronuts
   end
 
   def make_batters(item_in)
-    item_in["batters"]["batter"].map do |batter_data|
+    item_in[:batters][:batter].map do |batter_data|
       Batter.new(batter_data)
     end
   end
 
   def make_toppings(item_in)
-    item_in["topping"].map do |topping_data|
+    item_in[:topping].map do |topping_data|
       Topping.new(topping_data)
     end
 
@@ -48,9 +48,9 @@ class MakeCronuts
   def list_batters
     ingredients_out = []
     @data_in.each do |item|
-      item["batters"].each do |batter|
+      item[:batters].each do |batter|
         batter[1].each do |ingredient|
-          ingredients_out << ingredient["type"]
+          ingredients_out << ingredient[:type]
         end
       end
     end
@@ -60,8 +60,8 @@ class MakeCronuts
   def list_toppings
     ingredients_out = []
     @data_in.each do |item|
-      item["topping"].each do |ingredient|
-        ingredients_out << ingredient["type"]
+      item[:topping].each do |ingredient|
+        ingredients_out << ingredient[:type]
       end
     end
     ingredients_out.uniq

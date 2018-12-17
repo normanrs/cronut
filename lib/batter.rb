@@ -3,8 +3,8 @@ class Batter
 							:type
 
 	def initialize(data)
-		@id = data["id"].to_i
-		@type = data["type"]
+		@id = data[:id].to_i
+		@type = data[:type]
 	end
 
 end

@@ -5,7 +5,7 @@ require './lib/item.rb'
 class ItemTest < Minitest::Test
 
   def test_item_creation_using_defaults
-    item_data = {id: 1, type: "donut", name: "Norm's Famous", ppu: 0.65 }
+    item_data = {:id => 1, :type => "donut", :name => "Norm's Famous", :ppu => 0.65 }
     ncronut = Item.new(item_data)
     assert_equal 1, ncronut.id
     assert_equal "Norm's Famous", ncronut.name
@@ -16,12 +16,12 @@ class ItemTest < Minitest::Test
   end
 
   def test_can_store_batter_and_topping_options
-    batter_regular   = { "id": "1001", "type": "Regular" }
-    batter_chocolate = { "id": "1002", "type": "Chocolate" }
-    batter_blueberry = { "id": "1003", "type": "Blueberry" }
-    topping_none     = { "id": "5001", "type": "None" }
-    topping_glazed   = { "id": "5002", "type": "Glazed" }
-    item_data_1 = {id: 1, name: "Norm's Famous", type: "donut", ppu: 0.65 }
+    batter_regular   = { :id => "1001", :type => "Regular" }
+    batter_chocolate = { :id => "1002", :type => "Chocolate" }
+    batter_blueberry = { :id => "1003", :type => "Blueberry" }
+    topping_none     = { :id => "5001", :type => "None" }
+    topping_glazed   = { :id => "5002", :type => "Glazed" }
+    item_data_1 = {:id => 1, :name => "Norm's Famous", :type => "donut", :ppu => 0.65 }
     batter_1 = Batter.new(batter_regular)
     batter_2 = Batter.new(batter_chocolate)
     batter_3 = Batter.new(batter_blueberry)
